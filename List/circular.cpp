@@ -31,4 +31,23 @@ class SinglyLinkedList {
             }
             temp->next = newNode;
         }
+        bool is_circular() {
+            if (head == nullptr) return false;
+    
+            Node* temp = head->next;
+            while (temp != nullptr && temp != head) {
+                temp = temp->next;
+            }
+            return (temp == head);
+        }
+        void make_circular() {
+            if (head == nullptr) return;
+    
+            Node* temp = head;
+            while (temp->next != nullptr && temp->next != head) {
+                temp = temp->next;
+            }
+            temp->next = head;
+        }
+    
     };    
